@@ -9,6 +9,8 @@ const normalApi = {
     'api/cgi-bin/is_login.py',
     hello:
     'api/cgi-bin/hello.py',
+    portrait:
+    'api/images',
 }
 
 export {
