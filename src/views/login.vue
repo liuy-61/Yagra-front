@@ -1,8 +1,13 @@
 <template>
     <div>
-        <input placeholder="用户名" type="text" v-model="username"><br>
-        <input placeholder="密码" type="text" v-model="password"><br>
-        <button @click="loginHandle">登录</button>
+        <div v-show = "logged === false">
+            <input placeholder="用户名" type="text" v-model="username"><br>
+            <input placeholder="密码" type="text" v-model="password"><br>
+            <button @click="loginHandle">登录</button>
+        </div>
+        <div v-show = "logged === true">
+             {{logged_name}}，您已成功登录。若想切账号，请先退出登录。
+        </div>
     </div>
 </template>
 
@@ -17,20 +22,26 @@ export default {
     return {
       username: "",
       password: "",
-      data: null
+      data: null,
+      logged_name: "",
+      logged: false
     }
   },
   mounted: function(){
+      let self = this;
       axios.get(normalApi.is_login).then
       (function(response){
           response.data
           console.log(response.data);
           if (response.data.status_code == 0) {
               alert("您还未登录，请先登录，若无账号，请先注册");
+          }else{
+            self.logged = true;
+            self.logged_name = self.getCookie("session_id").split("-")[1];
           }
       },function (err){
           console.log(err)
-      })  
+      })
   },
   methods: {
     loginHandle () {
@@ -61,7 +72,7 @@ export default {
         else
         return null;
     },
-     delCookie(name) {
+    delCookie(name) {
         var exp = new Date();
         exp.setTime(exp.getTime() - 1);
         var cval=this.getCookie(name);

@@ -1,9 +1,13 @@
 <template>
     <div>
+      <div  v-show ="logged === true">
         <input class="file" name="file" type="file" accept="image/png,image/gif,image/jpeg" @change="update($event)"/>
+      </div>
+      <div v-show ="logged === false">
+        若想上传头像，请先登录
+      </div>
     </div>
 </template>
-
 
 <script>
 import axios from 'axios'
@@ -15,20 +19,26 @@ export default {
     return {
       username: "",
       password: "",
-      data: null
+      data: null,
+      logged_name: "",
+      logged: false
     }
   },
   mounted: function(){
+      let self = this;
       axios.get(normalApi.is_login).then
       (function(response){
           response.data
           console.log(response.data);
           if (response.data.status_code == 0) {
               alert("您还未登录，请先登录，若无账号，请先注册");
+          }else{
+            self.logged = true;
+            self.logged_name = self.getCookie("session_id").split("-")[1];
           }
       },function (err){
           console.log(err)
-      })  
+      })
   },
   methods: {
     update (e) {   // 上传照片
@@ -50,6 +60,13 @@ export default {
           }
           console.log(res.data)
         })
+    },
+    getCookie(name){
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+        return unescape(arr[2]);
+        else
+        return null;
     }
   }
 }
