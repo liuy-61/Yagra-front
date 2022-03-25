@@ -3,12 +3,18 @@ import HomeView from '../views/HomeView.vue'
 import Login from '../views/login.vue'
 import Upload from '../views/upload.vue'
 import Register from '../views/register.vue'
+import Logout from '../views/logout.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/login',
+    // name: 'login',
+    component: Login
   },
   {
     path: '/login',
@@ -24,6 +30,11 @@ const routes = [
     path: '/upload',
     // name: 'login',
     component: Upload
+  },
+  {
+    path: '/logout',
+    // name: 'logout',
+    component: Logout
   },
   {
     path: '/about',

@@ -11,6 +11,8 @@ const normalApi = {
     'api/cgi-bin/hello.py',
     portrait:
     'api/images',
+    logout:
+    'api/logout'
 }
 
 export {
