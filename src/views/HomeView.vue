@@ -6,7 +6,9 @@
       <div v-show ="logged === false">
         亲爱的游客，请先登录
       </div>
-      <img v-show = "exist_portrait_falg === true" :src="portrait_url"><br>
+      <img  v-show = "exist_portrait_falg === true" 
+      :src="portrait_url"
+      width="300" height="400"><br>
       <div v-show = "exist_portrait_falg === false" >
         您还未上传头像
       </div>
