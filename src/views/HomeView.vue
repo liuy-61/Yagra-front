@@ -1,7 +1,7 @@
 <template>
   <div>
       <div class="home" v-show ="logged === true">
-        欢迎{{logged_name}}<br>
+        亲爱的{{logged_name}}，欢迎你~<br>
         <img alt="Vue logo" src="../assets/logo.png">
       </div>
       <div v-show ="logged === false">

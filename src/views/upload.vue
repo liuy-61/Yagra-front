@@ -1,6 +1,7 @@
 <template>
     <div>
       <div  v-show ="logged === true">
+        亲爱的{{logged_name}}，您可以选择图像文件上传头像~<br>
         <input class="file" name="file" type="file" accept="image/png,image/gif,image/jpeg" @change="update($event)"/>
       </div>
       <div v-show ="logged === false">
