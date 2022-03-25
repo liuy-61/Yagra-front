@@ -27,11 +27,9 @@ export default {
           response.data
           console.log(response.data);
           if (response.data.status_code == 0) {
-              alert("该用户未注册，请先注册");
+              alert("该用户名已注册，请重新注册");
           }else if (response.data.status_code == 1){
-              alert("密码错误，请重新登录");
-          }else{
-              alert("登录成功");
+              alert("注册成功");
           }
       },function (err){
           console.log(err)
