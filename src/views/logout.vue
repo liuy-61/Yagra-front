@@ -4,8 +4,8 @@
             您还未登录
         </div>
         <div v-show = "logged === true">
-             {{logged_name}}，您已成功登录，点击下方按钮即可退出登录~
-             <button @click="logoutHandle">注册</button>
+             {{logged_name}}，您已成功登录，点击下方按钮即可退出登录~<br>
+             <button @click="logoutHandle">退出登录</button>
         </div>
     </div>
 </template>
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     logoutHandle () {
-        this.delCookie()
+        this.delCookie("session_id")
     },
     setCookie(name, value, expireDays=1, ptah='/') {
        var exp = new Date();
