@@ -32,7 +32,7 @@ export default {
           response.data
           console.log(response.data);
           if (response.data.status_code == 0) {
-              alert("您还未登录，请先登录，若无账号，请先注册");
+              // alert("您还未登录，请先登录，若无账号，请先注册");
           }else{
             self.logged = true;
             self.logged_name = self.getCookie("session_id").split("-")[1];
