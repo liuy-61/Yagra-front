@@ -20,6 +20,18 @@ export default {
       data: null
     }
   },
+  mounted: function(){
+      axios.get(normalApi.is_login).then
+      (function(response){
+          response.data
+          console.log(response.data);
+          if (response.data.status_code == 0) {
+              alert("您还未登录，请先登录，若无账号，请先注册");
+          }
+      },function (err){
+          console.log(err)
+      })  
+  },
   methods: {
     loginHandle () {
       axios.get(normalApi.login,  {params:{name:this.username, pwd:this.password}}).then
